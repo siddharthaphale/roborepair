@@ -1,0 +1,41 @@
+attempt 11 failed: target_not_localized - The previous program never located the target object.
+  MUST: look up each object with get_object_pose(name) and move using the returned position
+  NEVER: referencing objects not in the scene
+  NEVER: guessing positions
+attempt 10 failed: missing_grasp - The previous program never attempted a grasp.
+  MUST: grasp the object before lifting/placing: goto_pose to the object's centre position, then close_gripper()
+  NEVER: lifting or placing before a successful grasp
+attempt 9 failed: syntax_error - The previous program did not compile.
+  MUST: write a complete syntactically valid program
+  NEVER: truncated statements
+  NEVER: markdown or prose inside the code
+attempt 8 failed: timeout - The previous program exceeded the execution time budget.
+  MUST: remove unbounded loops and retry/polling logic; write a short direct sequence of API calls
+  NEVER: while-loops that wait or retry
+  NEVER: sleep or polling
+attempt 7 failed: invalid_api - The previous program called functions that do not exist.
+  MUST: use ONLY the documented API functions, already defined (no imports, no redefinitions)
+  NEVER: import statements
+  NEVER: calling functions not in the API doc
+  NEVER: redefining API functions
+attempt 6 failed: no_api_calls - The previous program executed but made no API calls.
+  MUST: make the API calls execute at top level; call any helper function you define
+  NEVER: defining functions without calling them
+attempt 5 failed: unsafe_path - An object was knocked off the table.
+  MUST: approach objects from above with z_approach; avoid sweeping motions near objects
+  NEVER: motions that knock objects off the table
+attempt 4 failed: failed_grasp - The grasp was attempted but did not secure the object.
+  MUST: grasp at the object's CENTRE: goto_pose to the object's centre position, then close_gripper(), with the gripper empty
+  NEVER: closing the gripper away from the object's centre
+attempt 3 failed: grasp_without_goto - The gripper closed while positioned away from the object.
+  MUST: move the gripper to the object's centre BEFORE closing: goto_pose to the object's centre position, then close_gripper()
+  NEVER: close_gripper without first moving to the object
+attempt 2 failed: grasp_while_holding - A grasp failed because the gripper was still holding another object.
+  MUST: grasp only ONE object; move the held object to its destination instead of grasping another
+  NEVER: closing the gripper while already holding an object
+attempt 1 failed: object_not_lifted - The object was grasped but never lifted.
+  MUST: after the grasp, LIFT the object: call lift(name, height=0.1) after the grasp
+  NEVER: ending the program with the object still on the table
+attempt 0 failed: released_after_lift - The object was lifted but then released, so it was no longer held at the end.
+  MUST: do NOT open the gripper after lifting; keep holding (or place on the target first): use place_on(source, target) as the final action (it releases)
+  NEVER: open_gripper immediately after lifting

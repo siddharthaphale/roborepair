@@ -1,0 +1,9 @@
+attempt 2 failed: failed_grasp - The grasp was attempted but did not secure the object.
+  MUST: grasp at the object's CENTRE: goto_pose to the object's centre position, then close_gripper(), with the gripper empty
+  NEVER: closing the gripper away from the object's centre
+attempt 1 failed: released_after_lift - The object was lifted but then released, so it was no longer held at the end.
+  MUST: do NOT open the gripper after lifting; keep holding (or place on the target first): use place_on(source, target) as the final action (it releases)
+  NEVER: open_gripper immediately after lifting
+attempt 0 failed: missing_grasp - The previous program never attempted a grasp.
+  MUST: grasp the object before lifting/placing: goto_pose to the object's centre position, then close_gripper()
+  NEVER: lifting or placing before a successful grasp

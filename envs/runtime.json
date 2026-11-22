@@ -1,0 +1,8 @@
+{
+  "python": "3.12",
+  "platform": "Linux aarch64",
+  "hardware": "NVIDIA GB10",
+  "cuda": "13.0",
+  "robosuite": "1.5.2",
+  "mujoco": "3.3.5"
+}

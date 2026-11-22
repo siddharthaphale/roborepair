@@ -1,0 +1,3 @@
+attempt 0 failed: failed_grasp - The grasp was attempted but did not secure the object.
+  MUST: grasp at the object's CENTRE: goto_pose to the object's centre position, then close_gripper(), with the gripper empty
+  NEVER: closing the gripper away from the object's centre

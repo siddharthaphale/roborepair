@@ -1,0 +1,56 @@
+{
+  "files": [
+    {
+      "path": "data/failure_banks/development_failures.jsonl",
+      "sha256": "35158adf601396d3670248d128539c5cfc74511132a7cc5203d25cceebb9375b"
+    },
+    {
+      "path": "data/failure_banks/evaluation_failures.jsonl",
+      "sha256": "35a2202836060a8136bbb61608b0e9512ccf88c92200d1eb84f93048fd63887f"
+    },
+    {
+      "path": "data/failure_banks/pilot_failures.jsonl",
+      "sha256": "0ca0354c6931d5baa896ad646d9d31a1aa0436f45249fbc948fc7420ba5ab307"
+    },
+    {
+      "path": "data/feedback_templates/compatibility.json",
+      "sha256": "5fb815f3277c60111ff0747cf2ac86cc0cfa82b25d525b057954f04bd96926ff"
+    },
+    {
+      "path": "data/feedback_templates/compatible_template_union_cube_lift_high_level.txt",
+      "sha256": "794230d66079c99bccd06ea0856f993e36fd78846d9359c7d67f9a9eb4a1b53a"
+    },
+    {
+      "path": "data/feedback_templates/compatible_template_union_cube_stack_high_level.txt",
+      "sha256": "0b084260d24aa7604d5378d4cd7e7b2814678ade5b607d1f885a43f09545ad68"
+    },
+    {
+      "path": "data/feedback_templates/development_label_frequencies.json",
+      "sha256": "f9399156bf5699c0df1995423d7234fa17bf14f54e06bcbce983d49b775660d5"
+    },
+    {
+      "path": "data/feedback_templates/donor_feedback.json",
+      "sha256": "244257ab3f46a54867664e29d9281756386f1e9eec158b559d59931f36fd4098"
+    },
+    {
+      "path": "data/feedback_templates/fixed_task_template_cube_lift_high_level.txt",
+      "sha256": "5547314d224ae6985d579c3afb7b4831bd438d877f7427c7b8e31a54a1566a65"
+    },
+    {
+      "path": "data/feedback_templates/fixed_task_template_cube_stack_high_level.txt",
+      "sha256": "09d2a85db2f8236800c0ef4ad90c7d008b28eb2b935166a769f3009e1d976f98"
+    },
+    {
+      "path": "data/feedback_templates/label_permutation.json",
+      "sha256": "03b63755e91b8a7db2a5dba54f492d6c0bd8fcc9a92106e48418c1149399661d"
+    },
+    {
+      "path": "data/feedback_templates/three_task_templates_cube_lift_high_level.txt",
+      "sha256": "31b118a352fad79a8fc8b55ace58f5e2448f5d0bbddbf5448e31bc16aa71220e"
+    },
+    {
+      "path": "data/feedback_templates/three_task_templates_cube_stack_high_level.txt",
+      "sha256": "2578aaa2aee3fbb30c07eedb14b4e77ad9bab39737b7dee744d8f6e59e619750"
+    }
+  ]
+}

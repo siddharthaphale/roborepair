@@ -1,0 +1,48 @@
+stage: static_guidance_evaluation
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_lift, cube_stack]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+experiment:
+  experiment_id: static_guidance_evaluation
+  study_id: static_guidance_study
+  suffix: neutral
+  log_prompt_text: true
+  tier: "high_level"
+  max_retries: 5
+  wave_size: 16
+  arms:
+    - static_guidance_from_start
+    - resample
+    - template_feedback
+    - fixed_task_template
+
+fresh_episodes:
+  perturbation: null
+  seeds_per_task: 350
+  tasks:
+    cube_lift: 24000
+    cube_stack: 25000

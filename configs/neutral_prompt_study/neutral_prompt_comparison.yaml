@@ -1,0 +1,45 @@
+stage: neutral_prompt_comparison
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_lift, cube_stack]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+experiment:
+  failure_bank: data/failure_banks/evaluation_failures.jsonl
+  experiment_id: neutral_prompt_comparison
+  study_id: neutral_prompt_study
+  suffix: neutral
+  log_prompt_text: true
+  tier: "high_level"
+  max_retries: 5
+  wave_size: 16
+  donor_feedback_path: data/feedback_templates/donor_feedback.json
+  arms:
+    - template_feedback
+    - resample
+    - different_label_feedback
+    - fixed_task_template
+    - editing_with_template_feedback
+    - repeated_api_rules

@@ -1,0 +1,7 @@
+stage: pilot_failure_bank
+
+pilot_bank:
+  source_run_dir: runs/task_model_evaluation_7b_seed0
+  cells:
+    cube_lift_pose_shift_7b: 60
+    cube_stack_distractor_7b: 60

@@ -1,0 +1,4 @@
+stage: feedback_templates
+
+feedback_templates:
+  development_bank: data/failure_banks/development_failures.jsonl

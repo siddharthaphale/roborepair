@@ -1,0 +1,43 @@
+stage: low_level_task_evaluation
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_to_zone, place_in_bin]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+task_evaluation:
+  stage_name: low_level_task_evaluation
+  tier: "low_level"
+  max_retries: 5
+  wave_size: 16
+  programs_per_cell: 160  # Provides enough failures for the evaluation split.
+  eval_cap: 60
+  min_eval_failures: 40
+  band_confirmatory: [0.10, 0.70]
+  band_reported: [0.05, 0.80]
+  cells:
+    - {id: cube_to_zone_low_level_7b, task: cube_to_zone, perturbation: null, sim_seed_start: 2100,
+       arms: [resample, template_feedback, donor_feedback]}
+    - {id: place_in_bin_low_level_7b, task: place_in_bin, perturbation: null, sim_seed_start: 2200,
+       arms: [resample, template_feedback, donor_feedback]}

@@ -1,0 +1,61 @@
+[project]
+name = "roborepair"
+version = "0.1.0"
+description = "Controlled retry experiments for robot code agents with frozen language models."
+readme = "README.md"
+license = "MIT"
+authors = [{name = "Siddharth Aphale"}, {name = "Ayushman Singh"}]
+requires-python = ">=3.10"
+
+dependencies = [
+  "jsonschema>=4.0",
+  "numpy>=1.24",
+  "pyyaml>=6.0",
+  "torch>=2.3",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=7.4",
+]
+
+dev = [
+  "matplotlib",
+  "ruff>=0.6",
+]
+
+all = [
+  "roborepair[test,dev]",
+]
+
+[project.urls]
+Repository = "https://github.com/siddharthaphale/roborepair"
+Issues = "https://github.com/siddharthaphale/roborepair/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"roborepair.schema" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "gpu: requires a pinned code model and CUDA",
+  "simulator: requires robosuite and MuJoCo",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+ignore = ["B008"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["roborepair"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"

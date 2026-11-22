@@ -1,0 +1,15 @@
+{
+  "syntax_error": "missing_grasp",
+  "timeout": "unsafe_path",
+  "invalid_api": "target_not_localized",
+  "no_api_calls": "grasp_while_holding",
+  "target_not_localized": "failed_grasp",
+  "unsafe_path": "invalid_api",
+  "missing_grasp": "no_api_calls",
+  "failed_grasp": "released_after_lift",
+  "grasp_without_goto": "object_not_lifted",
+  "grasp_while_holding": "bad_placement",
+  "object_not_lifted": "grasp_without_goto",
+  "released_after_lift": "timeout",
+  "bad_placement": "syntax_error"
+}

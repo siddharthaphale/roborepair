@@ -1,0 +1,43 @@
+stage: model_family_comparison
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "deepseek-ai/deepseek-coder-6.7b-instruct"
+  revision: "e5d64addd26a6a1db0f9b863abf6ee3141936807"
+  tokenizer_revision: "e5d64addd26a6a1db0f9b863abf6ee3141936807"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_lift, cube_stack, cube_to_zone, place_in_bin]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+task_evaluation:
+  stage_name: model_family_comparison
+  tier: "high_level"
+  max_retries: 5
+  wave_size: 8  # Smaller batches limit model-memory pressure.
+  programs_per_cell: 80
+  eval_cap: 60
+  min_eval_failures: 40
+  band_confirmatory: [0.10, 0.70]
+  band_reported: [0.05, 0.80]
+  cells:
+    - {id: cube_lift_deepseek, task: cube_lift, perturbation: null, sim_seed_start: 1700,
+       arms: [resample, template_feedback, donor_feedback]}
+    - {id: cube_stack_deepseek, task: cube_stack, perturbation: null, sim_seed_start: 1800,
+       arms: [resample, template_feedback, donor_feedback]}

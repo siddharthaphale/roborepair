@@ -1,0 +1,45 @@
+stage: manipulation_failure_bank
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_lift, cube_stack]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+generation:
+  sim_seed_start: 100  # Disjoint from simulator-check seeds 0-14.
+  sim_seeds_per_task: 90
+  gen_seeds_per_sim_seed: 2
+  wave_size: 16
+  # -> 2 tasks * 90 * 2 = 360 initial programs; at ~18% success ~= 295 failures
+
+failure_bank:
+  primary_tier: "high_level"
+  dev_max: 40
+  pass_criteria:
+    fault_label_min: 0.95
+    label_agreement_min: 0.95
+    success_agreement_min: 0.99
+    gold_min: 0.90
+    success_band: [0.10, 0.70]
+    eval_min: 120

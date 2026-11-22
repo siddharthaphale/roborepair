@@ -1,0 +1,31 @@
+{
+  "cube_lift": [
+    "syntax_error",
+    "timeout",
+    "invalid_api",
+    "no_api_calls",
+    "target_not_localized",
+    "unsafe_path",
+    "missing_grasp",
+    "failed_grasp",
+    "grasp_without_goto",
+    "grasp_while_holding",
+    "object_not_lifted",
+    "released_after_lift"
+  ],
+  "cube_stack": [
+    "syntax_error",
+    "timeout",
+    "invalid_api",
+    "no_api_calls",
+    "target_not_localized",
+    "unsafe_path",
+    "missing_grasp",
+    "failed_grasp",
+    "grasp_without_goto",
+    "grasp_while_holding",
+    "object_not_lifted",
+    "released_after_lift",
+    "bad_placement"
+  ]
+}

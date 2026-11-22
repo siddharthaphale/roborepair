@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Robot program execution trace",
+  "description": "Structured execution events, failure labels, and task progress for robot programs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "compile_ok",
+    "api_ok",
+    "timed_out",
+    "task_success",
+    "progress",
+    "subgoals",
+    "events",
+    "metrics",
+    "failure_labels",
+    "diagnosis",
+    "sim_seed",
+    "program_hash"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "compile_ok": {
+      "type": "boolean"
+    },
+    "api_ok": {
+      "type": "boolean"
+    },
+    "timed_out": {
+      "type": "boolean"
+    },
+    "task_success": {
+      "type": "boolean"
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "subgoals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "failure_labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "diagnosis": {
+      "type": "string"
+    },
+    "sim_seed": {
+      "type": "integer"
+    },
+    "program_hash": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+attempt 1 failed: target_not_localized - The previous program never located the target object.
+  MUST: look up each object with get_object_pose(name) and move using the returned position
+  NEVER: referencing objects not in the scene
+  NEVER: guessing positions
+attempt 0 failed: missing_grasp - The previous program never attempted a grasp.
+  MUST: grasp the object before lifting/placing: goto_pose to the object's centre position, then close_gripper()
+  NEVER: lifting or placing before a successful grasp

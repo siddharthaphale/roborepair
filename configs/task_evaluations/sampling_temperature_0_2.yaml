@@ -1,0 +1,38 @@
+stage: sampling_temperature_0_2
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.2
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [cube_lift, cube_stack]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+replication:
+  stage_name: sampling_temperature_0_2
+  tier: "high_level"
+  max_retries: 5
+  wave_size: 16
+  eval_cap: 60
+  task_evaluation_run_dir: runs/task_model_evaluation_7b_seed0
+  cells:
+    - {id: cube_lift_pose_shift_7b, task: cube_lift, arms: [resample, template_feedback]}
+    - {id: cube_stack_distractor_7b, task: cube_stack, arms: [resample, template_feedback]}

@@ -1,0 +1,13 @@
+{
+  "cube_lift": {
+    "target_not_localized": 15,
+    "missing_grasp": 2
+  },
+  "cube_stack": {
+    "failed_grasp": 13,
+    "released_after_lift": 4,
+    "missing_grasp": 3,
+    "bad_placement": 2,
+    "target_not_localized": 1
+  }
+}

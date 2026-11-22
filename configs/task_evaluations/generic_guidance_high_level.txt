@@ -1,0 +1,6 @@
+attempt 0 failed: task_incomplete - The previous program did not complete the task.
+  MUST: write one complete Python program that performs the task from start to finish at top level
+  MUST: use only the documented API functions, with correct names and correct arguments
+  MUST: re-read the program and check it carefully before finishing
+  NEVER: include prose or explanations inside the code
+  NEVER: leave the program unfinished

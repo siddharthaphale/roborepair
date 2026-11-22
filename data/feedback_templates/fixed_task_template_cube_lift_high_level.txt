@@ -1,0 +1,4 @@
+attempt 0 failed: target_not_localized - The previous program never located the target object.
+  MUST: look up each object with get_object_pose(name) and move using the returned position
+  NEVER: referencing objects not in the scene
+  NEVER: guessing positions

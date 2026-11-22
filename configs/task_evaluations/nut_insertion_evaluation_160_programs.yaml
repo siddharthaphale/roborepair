@@ -1,0 +1,41 @@
+stage: nut_insertion_evaluation_160_programs
+
+seeds:
+  sim: 0
+  gen: 0
+  train: 0
+  perturb: 0
+
+model:
+  name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  tokenizer_revision: "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  quantization: "none"
+
+decoding:
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 1024
+  code_timeout_s: 60
+  trace_input_token_cap: 768
+  rawlog_input_token_cap: 768
+
+env:
+  backend: robosuite
+  tasks: [nut_on_peg]
+  sim_version: "robosuite-1.5.2+mujoco-3.3.5"
+  asset_version: "robosuite-1.5.2"
+
+task_evaluation:
+  stage_name: nut_insertion_evaluation_160_programs
+  tier: "high_level"
+  max_retries: 5
+  wave_size: 16
+  programs_per_cell: 160
+  eval_cap: 60
+  min_eval_failures: 40
+  band_confirmatory: [0.10, 0.70]
+  band_reported: [0.05, 0.80]
+  cells:
+    - {id: nut_insertion_7b, task: nut_on_peg, perturbation: null, sim_seed_start: 2500,
+       arms: [resample, template_feedback, donor_feedback]}
